@@ -11,7 +11,7 @@
 
     // Modules configuration
     "sway/workspaces": {
-        "disable-scroll": false,
+        "enable-bar-scroll": true,
         "format": "{icon}{name}",
         "format-icons": {
             "urgent": "",
