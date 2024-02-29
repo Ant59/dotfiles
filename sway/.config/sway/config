@@ -188,6 +188,5 @@ input type:mouse {
 }
 
 include /etc/sway/config.d/*
-exec_always waybar
 exec firefox
 
