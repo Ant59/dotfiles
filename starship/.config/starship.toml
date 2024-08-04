@@ -7,7 +7,6 @@ $docker_context\
 $git_branch\
 $git_status\
 $rust\
-$nodejs\
 $bun\
 $deno\
 $golang\
@@ -15,9 +14,6 @@ $java\
 $kotlin\
 $terraform\
 $package\
-$aws\
-$gcloud\
-$azure\
 $sudo\
 [](fg:bg_colour)\
 $fill\
@@ -66,6 +62,11 @@ format = '[｜ $symbol $branch ]($style)'
 [git_status]
 style = "bg:bg_colour"
 format = '[($all_status$ahead_behind )]($style)'
+
+[bun]
+symbol = ""
+style = "bg:bg_colour"
+format = '[｜ $symbol ($version) ]($style)'
 
 [nodejs]
 symbol = "󰎙"

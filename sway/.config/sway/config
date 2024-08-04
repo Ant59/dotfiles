@@ -5,6 +5,9 @@ set $term alacritty
 # Launcher
 set $menu fuzzel
 
+output "Samsung Electric Company C49RG9x H1AK500000" pos 0 1440
+output "Samsung Electric Company LF27T850 H4LNC02215" pos 1280 0
+
 # Key bindings
 bindsym $mod+Return exec $run $term
 bindsym $mod+Shift+q kill
@@ -110,15 +113,13 @@ for_window [class="jetbrains-toolbox"] floating enable
 for_window [title="Quick Format Citation"] floating enable
 
 # Steam
-for_window [class="steam"] focus_on_window_activation none
-for_window [class="steam" title="Sign in to Steam"] move to scratchpad
+for_window [class="steam"] floating enable
+for_window [class="steam" title="^Steam$"] floating disable
+#for_window [class="steam"] focus_on_window_activation none
+#for_window [class="steam" title="Sign in to Steam"] move to scratchpad
 
-# Zoom
-# For pop up notification windows that don't use notifications api
-for_window [app_id="zoom" title="^zoom$"] border none, floating enable
-# For specific Zoom windows
-for_window [app_id="zoom" title="^(Zoom|About)$"] border pixel, floating enable
-for_window [app_id="zoom" title="Settings"] floating enable, floating_minimum_size 960 x 700
+# Dev
+#for_window [title="App"] floating enable
 
 # Resizing
 mode "resize" {
@@ -133,9 +134,9 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 # Screenshot
-bindcode 107        exec /usr/share/sway/scripts/grimshot --notify save output $(xdg-user-dir PICTURES)/$(date +'screenshot_%Y-%m-%d-%H%M%S.png')
-bindcode Shift+107  exec /usr/share/sway/scripts/grimshot --notify save area $(xdg-user-dir PICTURES)/$(date +'screenshot_%Y-%m-%d-%H%M%S.png')
-bindcode Ctrl+107   exec /usr/share/sway/scripts/grimshot --notify save active $(xdg-user-dir PICTURES)/$(date +'screenshot_%Y-%m-%d-%H%M%S.png')
+bindcode 107        exec grimshot --notify save output $(xdg-user-dir PICTURES)/$(date +'screenshot_%Y-%m-%d-%H%M%S.png')
+bindcode Shift+107  exec grimshot --notify save area $(xdg-user-dir PICTURES)/$(date +'screenshot_%Y-%m-%d-%H%M%S.png')
+bindcode Ctrl+107   exec grimshot --notify save active $(xdg-user-dir PICTURES)/$(date +'screenshot_%Y-%m-%d-%H%M%S.png')
 
 # Colour picker
 bindsym $mod+Shift+p exec grim -g "$(slurp -p)" -t ppm - | convert - -format '%[pixel:p{0,0}]' txt:- | tail -n 1 | cut -d ' ' -f 4 | wl-copy 
@@ -188,5 +189,4 @@ input type:mouse {
 }
 
 include /etc/sway/config.d/*
-exec firefox
 
