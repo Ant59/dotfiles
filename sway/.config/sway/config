@@ -88,6 +88,9 @@ client.urgent #8EC3EB #8EC3EB #ee0000
 default_border none
 default_floating_border none
 
+for_window [shell="xwayland"] title_format "[XWayland] %title"
+for_window [title="RuneLite Launcher"] floating enable
+
 # Application window settings
 for_window [window_role="pop-up"] floating enable
 for_window [window_role="bubble"] floating enable
@@ -137,6 +140,9 @@ bindsym $mod+r mode "resize"
 bindcode 107        exec grimshot --notify save output $(xdg-user-dir PICTURES)/$(date +'screenshot_%Y-%m-%d-%H%M%S.png')
 bindcode Shift+107  exec grimshot --notify save area $(xdg-user-dir PICTURES)/$(date +'screenshot_%Y-%m-%d-%H%M%S.png')
 bindcode Ctrl+107   exec grimshot --notify save active $(xdg-user-dir PICTURES)/$(date +'screenshot_%Y-%m-%d-%H%M%S.png')
+
+# Typing paste
+bindsym Ctrl+Alt+v exec sleep 1 && ydotool key 29:0 56:0 && wl-paste --no-newline | ydotool type --file -
 
 # Colour picker
 bindsym $mod+Shift+p exec grim -g "$(slurp -p)" -t ppm - | convert - -format '%[pixel:p{0,0}]' txt:- | tail -n 1 | cut -d ' ' -f 4 | wl-copy 

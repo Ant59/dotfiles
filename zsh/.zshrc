@@ -26,9 +26,15 @@ zinit light zsh-users/zsh-syntax-highlighting
 zinit light zsh-users/zsh-completions
 zinit light zsh-users/zsh-autosuggestions
 zinit light Aloxaf/fzf-tab
+NVM_COMPLETION=true
+NVM_LAZY_LOAD=true
+NVM_AUTO_USE=true
+zinit wait lucid light-mode for lukechilds/zsh-nvm
 
 # Load completions
-autoload -U compinit && compinit
+autoload -Uz compinit bashcompinit
+compinit
+bashcompinit
 
 # History
 HISTSIZE=10000
@@ -69,17 +75,25 @@ bindkey "^[[F" end-of-line
 bindkey "^[[3~" delete-char
 
 # Binary paths
+path+=/home/antony/.local/bin
 path+=/home/antony/Downloads/google-cloud-sdk/bin
 path+=/home/antony/.bun/bin
 path+=/home/antony/.cargo/bin
 path+=/home/antony/.yarn/bin
+path+=/home/antony/.krew/bin
 export PATH
 
-# 3rd Party Completions
-#source <(kubectl completion zsh)
-
 # Aliases
+#alias kubectl="HTTPS_PROXY=http://localhost:8888 kubectl"
 alias k="kubectl"
+#alias flux="HTTPS_PROXY=http://localhost:8888 flux"
 alias j="just"
 alias ls="eza -lah"
+
+export EDITOR=nvim
+
+# Kubectl TinyProxy
+export KUBECONFIG=/home/antony/.kube/config:/home/antony/Development/di/local-kube-setup/config/dev-kubeconfig:/home/antony/Development/di/local-kube-setup/config/prod-kubeconfig
+#export HTTPS_PROXY=http://localhost:8888
+alias start_proxy='ssh -L 8888:localhost:8888 -N -q -f -J seed@jumpbox-di.tailb46562.ts.net ubuntu@172.16.0.7'
 

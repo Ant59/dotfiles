@@ -57,35 +57,49 @@ truncation_symbol = "…/"
 [git_branch]
 symbol = "󰊢"
 style = "bg:bg_colour"
-format = '[｜ $symbol $branch ]($style)'
+format = '[ $symbol $branch ]($style)'
 
 [git_status]
 style = "bg:bg_colour"
 format = '[($all_status$ahead_behind )]($style)'
 
+[kubernetes]
+symbol = "󱃾"
+style = "bg:bg_colour"
+format = '[ $symbol $context ($namespace)]($style)'
+disabled = false
+
+[[kubernetes.contexts]]
+context_pattern = ".*prod.*"
+style = "bold bg:bright-red"
+
+[[kubernetes.contexts]]
+context_pattern = "gke_.*_(?P<cluster>[\\w-]+)"
+context_alias = "gke-$cluster"
+
 [bun]
 symbol = ""
 style = "bg:bg_colour"
-format = '[｜ $symbol ($version) ]($style)'
+format = '[ $symbol ($version) ]($style)'
 
 [nodejs]
 symbol = "󰎙"
 style = "bg:bg_colour"
-format = '[｜ $symbol ($version) ]($style)'
+format = '[ $symbol ($version) ]($style)'
 
 [rust]
 symbol = "󱘗"
 style = "bg:bg_colour"
-format = '[｜ $symbol ($version) ]($style)'
+format = '[ $symbol ($version) ]($style)'
 
 [golang]
 symbol = "󰟓"
 style = "bg:bg_colour"
-format = '[｜ $symbol ($version) ]($style)'
+format = '[ $symbol ($version) ]($style)'
 
 [package]
 style = "bg:bg_colour"
-format = '[｜ 󰏗 $version ]($style)'
+format = '[ 󰏗 $version ]($style)'
 
 # Right modules
 
