@@ -137,9 +137,9 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 # Screenshot
-bindcode 107        exec grimshot --notify save output $(xdg-user-dir PICTURES)/$(date +'screenshot_%Y-%m-%d-%H%M%S.png')
-bindcode Shift+107  exec grimshot --notify save area $(xdg-user-dir PICTURES)/$(date +'screenshot_%Y-%m-%d-%H%M%S.png')
-bindcode Ctrl+107   exec grimshot --notify save active $(xdg-user-dir PICTURES)/$(date +'screenshot_%Y-%m-%d-%H%M%S.png')
+bindcode 107        exec grim $(xdg-user-dir PICTURES)/$(date +'screenshot_%Y-%m-%d-%H%M%S.png')
+bindcode Shift+107  exec slurp | grim -g - $(xdg-user-dir PICTURES)/$(date +'screenshot_%Y-%m-%d-%H%M%S.png')
+bindcode Ctrl+107   exec swaymsg -t get_tree | jq -r '.. | select(.focused?) | .rect | "\(.x),\(.y) \(.width)x\(.height)"' | grim -g - $(xdg-user-dir PICTURES)/$(date +'screenshot_%Y-%m-%d-%H%M%S.png')
 
 # Typing paste
 bindsym Ctrl+Alt+v exec sleep 1 && ydotool key 29:0 56:0 && wl-paste --no-newline | ydotool type --file -
@@ -171,6 +171,9 @@ exec $run swayidle -w \
         resume 'swaymsg "output * dpms on"' \
     before-sleep 'swaylock -c 000000' \
     lock 'swaylock -f -c 000000'
+
+for_window [shell=".*"] inhibit_idle fullscreen
+for_window [title=".*Huddle.*"] inhibit_idle
 
 # Lock
 bindsym $mod+l exec loginctl lock-session
