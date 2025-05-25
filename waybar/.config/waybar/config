@@ -3,12 +3,12 @@
     "spacing": 4, // Gaps between modules (4px)
 
     // Choose the order of the modules
-    "modules-left": ["sway/workspaces", "sway/mode"],
-    "modules-center": ["sway/window"],
+    "modules-left": ["hyprland/workspaces", "hyprland/mode"],
+    "modules-center": ["hyprland/window"],
     "modules-right": ["wireplumber", "network", "cpu", "memory", "battery", "tray", "clock#time", "clock#date"],
 
     // Modules configuration
-    "sway/workspaces": {
+    "hyprland/workspaces": {
         "enable-bar-scroll": true,
         "format": "{icon}{name}",
         "format-icons": {
@@ -26,7 +26,7 @@
             "unlocked": ""
         }
     },
-    "sway/mode": {
+    "hyprland/mode": {
         "format": "<span style=\"italic\">{}</span>"
     },
     // "mpd": {
@@ -120,7 +120,7 @@
         "tooltip": false
     },
     "clock#date": {
-        "format": "{:1%Y-%m-%e}",
+        "format": "1{:%Y-%m-%d}",
         "tooltip": false
     }
 }
