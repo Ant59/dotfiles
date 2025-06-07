@@ -76,7 +76,6 @@ bindkey "^[[3~" delete-char
 
 # Binary paths
 path+=/home/antony/.local/bin
-path+=/home/antony/Downloads/google-cloud-sdk/bin
 path+=/home/antony/.bun/bin
 path+=/home/antony/.cargo/bin
 path+=/home/antony/.yarn/bin
@@ -97,3 +96,12 @@ export KUBECONFIG=/home/antony/.kube/config:/home/antony/Development/di/local-ku
 #export HTTPS_PROXY=http://localhost:8888
 alias start_proxy='ssh -L 8888:localhost:8888 -N -q -f -J seed@jumpbox-di.tailb46562.ts.net ubuntu@172.16.0.7'
 
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/home/antony/google-cloud-sdk/path.zsh.inc' ]; then . '/home/antony/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/home/antony/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/antony/google-cloud-sdk/completion.zsh.inc'; fi
+
+# bun completions
+[ -s "/home/antony/.oh-my-zsh/completions/_bun" ] && source "/home/antony/.oh-my-zsh/completions/_bun"
