@@ -162,8 +162,12 @@ bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 bindsym $mod+c exec pactl set-source-mute @DEFAULT_SOURCE@ toggle 
 
-# Set DISPLAY
-exec "systemctl --user import-environment {,WAYLAND_}DISPLAY SWAYSOCK"
+# Brightness
+bindsym XF86MonBrightnessDown exec brightnessctl set 20-
+bindsym XF86MonBrightnessUp exec brightnessctl set +20
+
+# Set environment
+exec "dbus-update-activation-environment --systemd --all"
 
 # Idle
 exec $run swayidle -w \

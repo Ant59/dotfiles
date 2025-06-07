@@ -11,6 +11,7 @@
     "hyprland/workspaces": {
         "on-scroll-up": "hyprctl dispatch workspace e-1",
         "on-scroll-down": "hyprctl dispatch workspace e+1",
+        "enable-bar-scroll": true,
         "format": "{icon}{name}",
         "format-icons": {
             "urgent": "",
@@ -98,7 +99,7 @@
         "tooltip": false
     },
     "clock#date": {
-        "format": "{:1%Y-%m-%e}",
+        "format": "1{:%Y-%m-%d}",
         "tooltip": false
     }
 }
